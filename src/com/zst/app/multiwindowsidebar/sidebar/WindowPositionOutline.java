@@ -4,6 +4,7 @@ import com.zst.app.multiwindowsidebar.IntentUtil;
 
 import android.view.Gravity;
 import android.view.ViewGroup;
+import com.zst.app.multiwindowsidebar.*;
 
 public class WindowPositionOutline {
 	
@@ -30,6 +31,26 @@ public class WindowPositionOutline {
 			outline_param[1] = (screen_height / 2);
 			outline_param[2] = Gravity.BOTTOM | Gravity.LEFT;
 			break;
+		case IntentUtil.SIDE_TOPLEFT:
+			outline_param[0] = (screen_width / 2);
+			outline_param[1] = (screen_height / 2);
+			outline_param[2] = Gravity.TOP | Gravity.LEFT;
+			break;
+		case IntentUtil.SIDE_TOPRIGHT:
+				outline_param[0] = (screen_width / 2);
+				outline_param[1] = (screen_height / 2);
+				outline_param[2] = Gravity.TOP | Gravity.RIGHT;
+				break;
+		case IntentUtil.SIDE_BOTTOMLEFT:
+				outline_param[0] = (screen_width / 2);
+				outline_param[1] = (screen_height / 2);
+				outline_param[2] = Gravity.BOTTOM | Gravity.LEFT;
+				break;
+		case IntentUtil.SIDE_BOTTOMRIGHT:
+				outline_param[0] = (screen_width / 2);
+				outline_param[1] = (screen_height / 2);
+				outline_param[2] = Gravity.BOTTOM | Gravity.RIGHT;
+				break;
 		case IntentUtil.SIDE_PA_HALO:
 			final boolean landscape = screen_width > screen_height;
 			if (landscape) {
@@ -57,26 +78,32 @@ public class WindowPositionOutline {
 	
 	public static int getPositionOfTouch(float x, float y, int screen_width, int screen_height) {
 		boolean landscape = screen_width > screen_height;
+		int snapGravity = 0;
+		int mRange = 100;
+		if(x < mRange) snapGravity = snapGravity | Gravity.LEFT;
+		if(x > (screen_width - mRange)) snapGravity = snapGravity | Gravity.RIGHT;
+		if(y < mRange) snapGravity = snapGravity | Gravity.TOP;
+		if(y > (screen_height - mRange)) snapGravity = snapGravity | Gravity.BOTTOM;
 		
 		switch (IntentUtil.sLaunchModeDrag) {
-		case IntentUtil.DragMode.XHFW_LANDSCAPE:
-			landscape = !landscape;
 		case IntentUtil.DragMode.XMULTI_WINDOW:
+				if (landscape) {
+					if (x < (screen_width / 2)) {
+						return IntentUtil.SIDE_LEFT;
+					} else if (x > (screen_width / 2)) {
+						return IntentUtil.SIDE_RIGHT;
+					}
+				} else {
+					if (y < (screen_height / 2)) {
+						return IntentUtil.SIDE_TOP;
+					} else if (y > (screen_height / 2)) {
+						return IntentUtil.SIDE_BOTTOM;
+					}
+				}
+				break;
 		case IntentUtil.DragMode.XHFW_PORTRAIT:
-			if (landscape) {
-				if (x < (screen_width / 2)) {
-					return IntentUtil.SIDE_LEFT;
-				} else if (x > (screen_width / 2)) {
-					return IntentUtil.SIDE_RIGHT;
-				}
-			} else {
-				if (y < (screen_height / 2)) {
-					return IntentUtil.SIDE_TOP;
-				} else if (y > (screen_height / 2)) {
-					return IntentUtil.SIDE_BOTTOM;
-				}
-			}
-			break;
+		case IntentUtil.DragMode.XHFW_LANDSCAPE:
+				return Compatibility.snapGravityToSide(snapGravity);
 		case IntentUtil.DragMode.PA_HALO:
 			return IntentUtil.SIDE_PA_HALO;
 		case IntentUtil.DragMode.NONE:

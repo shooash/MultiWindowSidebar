@@ -10,6 +10,11 @@ public class IntentUtil {
 	public final static int SIDE_TOP = 2;
 	public final static int SIDE_RIGHT = 3;
 	public final static int SIDE_BOTTOM = 4;
+	//4WAYMOD snaps
+	public final static int SIDE_TOPLEFT = 21;
+	public final static int SIDE_TOPRIGHT = 23;
+	public final static int SIDE_BOTTOMLEFT = 41;
+	public final static int SIDE_BOTTOMRIGHT = 43;
 	public final static int SIDE_FULLSCREEN = 5;
 	public final static int SIDE_PA_HALO = 6;
 	
