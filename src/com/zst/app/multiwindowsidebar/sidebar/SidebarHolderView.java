@@ -275,7 +275,7 @@ public class SidebarHolderView extends LinearLayout {
 							item.setPkg(str[0], str[1]);
 						} catch (NameNotFoundException e) {
 						}
-						mItemViews[(Integer) entry.getValue()] = item;
+						mItemViews[(int) entry.getValue()] = item;
 					} else {
 						SidebarItemView item = new SidebarItemView(mService, mInflator) {
 							@Override
@@ -290,7 +290,7 @@ public class SidebarHolderView extends LinearLayout {
 							item.setPkg(entry.getKey());
 						} catch (NameNotFoundException e) {
 						}
-						mItemViews[(Integer) entry.getValue()] = item;
+						mItemViews[(int) entry.getValue()] = item;
 					}
 				}
 				

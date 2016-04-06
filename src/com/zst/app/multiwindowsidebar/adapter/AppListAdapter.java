@@ -62,7 +62,7 @@ public abstract class AppListAdapter extends BaseAdapter {
 								
 								item.icon = Util.layerTwoIcons(mContext, icon0, icon1);
 								item.packageName = pkg_name;
-								array[app_array.get(pkg_name)] = item;
+								array[app_array.get(pkg_name).intValue()] = item;
 							} catch (Exception e) {
 							}
 						} else {
@@ -72,7 +72,7 @@ public abstract class AppListAdapter extends BaseAdapter {
 								item.title = ai.loadLabel(mPackageManager);
 								item.icon = ai.loadIcon(mPackageManager);
 								item.packageName = ai.packageName;
-								array[app_array.get(pkg_name)] = item;
+								array[app_array.get(pkg_name).intValue()] = item;
 							} catch (Exception e) {
 							}
 						}
