@@ -79,11 +79,11 @@ public class WindowPositionOutline {
 	public static int getPositionOfTouch(float x, float y, int screen_width, int screen_height) {
 		boolean landscape = screen_width > screen_height;
 		int snapGravity = 0;
-		int mRange = 100;
-		if(x < mRange) snapGravity = snapGravity | Gravity.LEFT;
-		if(x > (screen_width - mRange)) snapGravity = snapGravity | Gravity.RIGHT;
-		if(y < mRange) snapGravity = snapGravity | Gravity.TOP;
-		if(y > (screen_height - mRange)) snapGravity = snapGravity | Gravity.BOTTOM;
+		//int mRange = 100;
+		if(x < screen_width/3) snapGravity = snapGravity | Gravity.LEFT;
+		if(x > (screen_width*2/3)) snapGravity = snapGravity | Gravity.RIGHT;
+		if(y < screen_height/3) snapGravity = snapGravity | Gravity.TOP;
+		if(y > (screen_height*2/3)) snapGravity = snapGravity | Gravity.BOTTOM;
 		
 		switch (IntentUtil.sLaunchModeDrag) {
 		case IntentUtil.DragMode.XMULTI_WINDOW:
