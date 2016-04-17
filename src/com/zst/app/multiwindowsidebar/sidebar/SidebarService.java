@@ -231,7 +231,7 @@ public class SidebarService extends Service {
 				WindowManager.LayoutParams.WRAP_CONTENT,
 				v instanceof SidebarHolderView ? WindowManager.LayoutParams.MATCH_PARENT
 						: WindowManager.LayoutParams.WRAP_CONTENT,
-				WindowManager.LayoutParams.TYPE_SYSTEM_ERROR,
+				WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
 				WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH |
 				WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
 				WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
