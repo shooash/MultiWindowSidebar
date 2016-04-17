@@ -4,6 +4,7 @@ public class Common {
 	// Package Names
 	public static final String PKG_XMULTIWINDOW = "com.lovewuchin.xposed.xmultiwindow";
 	public static final String PKG_XHALOFLOATINGWINDOW = "com.zst.xposed.halo.floatingwindow";
+	public static final String PKG_XHALOFLOATINGWINDOW3 = "com.zst.xposed.halo.floatingwindow3";
 	public static final String PKG_THIS = Common.class.getPackage().getName();
 	
 	// Intent Launching

@@ -54,7 +54,9 @@ public class MainPrefFragment extends PreferenceFragment implements OnPreference
 				case IntentUtil.DragMode.XHFW_PORTRAIT:
 				case IntentUtil.DragMode.XHFW_LANDSCAPE:
 					if (!Util.isAppInstalled(getActivity().getPackageManager(),
-							Common.PKG_XHALOFLOATINGWINDOW)) {
+												 Common.PKG_XHALOFLOATINGWINDOW)
+						&&!Util.isAppInstalled(getActivity().getPackageManager(),
+												Common.PKG_XHALOFLOATINGWINDOW3)) {
 						Util.dialog(getActivity(), R.string.pref_launch_mode_error_xhfw);
 					}
 					break;
@@ -77,7 +79,9 @@ public class MainPrefFragment extends PreferenceFragment implements OnPreference
 				case IntentUtil.TapMode.XHFW_RIGHT:
 				case IntentUtil.TapMode.XHFW_CENTER:
 					if (!Util.isAppInstalled(getActivity().getPackageManager(),
-							Common.PKG_XHALOFLOATINGWINDOW)) {
+							Common.PKG_XHALOFLOATINGWINDOW)
+						&&!Util.isAppInstalled(getActivity().getPackageManager(),
+												   Common.PKG_XHALOFLOATINGWINDOW3)) {
 						Util.dialog(getActivity(), R.string.pref_launch_mode_error_xhfw);
 					}
 					break;
